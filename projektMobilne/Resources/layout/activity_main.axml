@@ -1,8 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent">
-	<ListView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:id="@+id/friendsView" />
-
-</RelativeLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" 
+    android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+    <LinearLayout 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/Container">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="#E2E2E2"
+            android:weightSum="100">
+            <TextView 
+                android:text="Imię"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="25"
+                android:gravity="center_horizontal"
+                android:textColor="#000"
+                android:textSize="16sp" />
+             <TextView 
+                android:text="Nazwisk"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="25"
+                android:gravity="center_horizontal"
+                android:textColor="#000"
+                android:textSize="16sp" />
+             <TextView 
+                android:text="Wiek"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="25"
+                android:gravity="center_horizontal"
+                android:textColor="#000"
+                android:textSize="16sp" />
+             <TextView 
+                android:text="Płeć"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="25"
+                android:gravity="center_horizontal"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <View 
+            android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:background="#000" />
+    	<ListView
+    		android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+    		android:id="@+id/friendsView"
+            android:background="#F2F2F2"
+            android:divider="#101010"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+    
+    <EditText
+        android:id="@+id/mSearch"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="Szukaj"
+        android:background="#fff"
+        android:textColor="#000"
+        android:textSize="16sp" />
+    
+</FrameLayout>
