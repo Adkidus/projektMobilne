@@ -97,7 +97,6 @@
     <AndroidResource Include="Resources\layout\listview_row.axml" />
     <AndroidResource Include="Resources\menu\actionbar.xml" />
     <AndroidResource Include="Resources\drawable\ic_search.png" />
-    <AndroidResource Include="Resources\drawable\search.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />

@@ -15,6 +15,7 @@
         android:layout_weight="25"
 		android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="14sp"
 		android:id="@+id/txtFirstName"/>
     <TextView
         android:text="Nazwisko"
@@ -22,6 +23,7 @@
         android:layout_weight="25"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="14sp"
         android:id="@+id/txtLastName"/>
     <TextView
         android:text="Wiek"
@@ -29,6 +31,7 @@
         android:layout_weight="25"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="14sp"
         android:id="@+id/txtAge"/>
     <TextView
         android:text="Płeć"
@@ -36,5 +39,6 @@
         android:layout_weight="25"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textSize="14sp"
         android:id="@+id/txtGender"/>
 </LinearLayout>

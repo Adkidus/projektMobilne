@@ -25,6 +25,16 @@ namespace projektMobilne
         private bool mAnimatedDown;
         private bool mIsAnimating;
 
+        private TextView mHeaderFirstName;
+        private TextView mHeaderLastName;
+        private TextView mHeaderAge;
+        private TextView mHeaderGender;
+
+        private bool mFirstNameFilterAsc;
+        private bool mLastNameFilterAsc;
+        private bool mAgeFilterAsc;
+        private bool mGenderFilterAsc;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,8 +45,19 @@ namespace projektMobilne
             mSearch = FindViewById<EditText>(Resource.Id.mSearch);
             mContainer = FindViewById<LinearLayout>(Resource.Id.Container);
 
+            mHeaderFirstName = FindViewById<TextView>(Resource.Id.txtHeaderFirstName);
+            mHeaderLastName = FindViewById<TextView>(Resource.Id.txtHeaderLastName);
+            mHeaderAge = FindViewById<TextView>(Resource.Id.txtHeaderAge);
+            mHeaderGender = FindViewById<TextView>(Resource.Id.txtHeaderGender);
+
+            mHeaderFirstName.Click += mHeaderFirstName_Click;
+            mHeaderLastName.Click += mHeaderLastName_Click;
+            mHeaderAge.Click += mHeaderAge_Click;
+            mHeaderGender.Click += mHeaderGender_Click;
+
             mSearch.Alpha = 0;
             mSearch.TextChanged += mSearch_TextChanged;
+            mContainer.BringToFront();
 
             mItems = new List<Person>();
             mItems.Add(new Person() { FirstName = "Marian", LastName = "Kowal", Age = "20", Gender = "M" });
@@ -49,6 +70,86 @@ namespace projektMobilne
 
 
             mListView.ItemClick += mListView_ItemClick;
+        }
+
+        private void mHeaderGender_Click(object sender, EventArgs e)
+        {
+            List<Person> filteredPersons;
+            if (!mGenderFilterAsc)
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.Gender ascending
+                                   select person).ToList<Person>();
+            }
+            else
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.Gender descending
+                                   select person).ToList<Person>();
+            }
+            adapter = new ListViewAdapter(this, filteredPersons, Resource.Layout.listview_row);
+            mListView.Adapter = adapter;
+            mGenderFilterAsc = !mGenderFilterAsc;
+        }
+
+        private void mHeaderAge_Click(object sender, EventArgs e)
+        {
+            List<Person> filteredPersons;
+            if (!mAgeFilterAsc)
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.Age ascending
+                                   select person).ToList<Person>();
+            }
+            else
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.Age descending
+                                   select person).ToList<Person>();
+            }
+            adapter = new ListViewAdapter(this, filteredPersons, Resource.Layout.listview_row);
+            mListView.Adapter = adapter;
+            mAgeFilterAsc = !mAgeFilterAsc;
+        }
+
+        private void mHeaderFirstName_Click(object sender, EventArgs e)
+        {
+            List<Person> filteredPersons;
+            if (!mFirstNameFilterAsc)
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.FirstName ascending
+                                   select person).ToList<Person>();
+            }
+            else
+            {
+                filteredPersons = (from person in mItems
+                                  orderby person.FirstName descending
+                                  select person).ToList<Person>();
+            }
+            adapter = new ListViewAdapter(this, filteredPersons, Resource.Layout.listview_row);
+            mListView.Adapter = adapter;
+            mFirstNameFilterAsc = !mFirstNameFilterAsc;
+        }
+
+        private void mHeaderLastName_Click(object sender, EventArgs e)
+        {
+            List<Person> filteredPersons;
+            if (!mLastNameFilterAsc)
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.LastName ascending
+                                   select person).ToList<Person>();
+            }
+            else
+            {
+                filteredPersons = (from person in mItems
+                                   orderby person.LastName descending
+                                   select person).ToList<Person>();
+            }
+            adapter = new ListViewAdapter(this, filteredPersons, Resource.Layout.listview_row);
+            mListView.Adapter = adapter;
+            mLastNameFilterAsc = !mLastNameFilterAsc;
         }
 
         private void mSearch_TextChanged(object sender, TextChangedEventArgs e)
